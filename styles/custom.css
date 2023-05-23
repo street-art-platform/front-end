@@ -1,0 +1,7 @@
+.image-art-home {
+    object-fit: contain;
+    height: 80%!important;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+  }
