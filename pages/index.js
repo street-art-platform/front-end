@@ -32,7 +32,7 @@ export default function Index() {
         </div>
         <img
           className="absolute top-0 b-auto right-0  sm:w-6/12 -mt-48 sm:mt-0 w-10/12 max-h-860-px"
-          src="/img/map4.png"
+          src="/img/home/map.png"
           alt="..."
         />
       </section>
@@ -177,7 +177,7 @@ export default function Index() {
                       <img
                         alt="..."
                         className="align-middle border-none max-w-full h-auto rounded-lg"
-                        src="/img/art_1.png"
+                        src="/img/arts/art_1.png"
                       />
                     </div>
                   </Link>
@@ -192,7 +192,7 @@ export default function Index() {
                       <img
                         alt="..."
                         className="align-middle border-none max-w-full h-auto rounded-lg"
-                        src="/img/art_2.png"
+                        src="/img/arts/art_2.png"
                       />
                     </div>
                   </Link>
@@ -207,7 +207,7 @@ export default function Index() {
                       <img
                         alt="..."
                         className="align-middle border-none max-w-full h-auto rounded-lg"
-                        src="/img/art_3.png"
+                        src="/img/arts/art_3.png"
                       />
                     </div>
                   </Link>
@@ -222,7 +222,7 @@ export default function Index() {
                       <img
                         alt="..."
                         className="align-middle border-none max-w-full h-auto rounded-lg"
-                        src="/img/art_4.png"
+                        src="/img/arts/art_4.png"
                       />
                     </div>
                   </Link>
@@ -247,7 +247,7 @@ export default function Index() {
                   transform:
                     "scale(1) perspective(1040px) rotateX(11deg) rotateY(2deg) rotate(2deg)",
                 }}
-                src="/img/art.jpg"
+                src="/img/arts/art.jpg"
               />
             
             </div>
@@ -345,7 +345,7 @@ export default function Index() {
                   transform:
                     "scale(1) perspective(1040px) rotateY(-11deg) rotateX(2deg) rotate(2deg)",
                 }}
-                src="/img/app_screen.png"
+                src="/img/home/app_screen.png"
               />
             </div>
           </div>
