@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
+import { Analytics } from '@vercel/analytics/react';
 
 import PageChange from "components/PageChange/PageChange.js";
 
@@ -74,6 +75,7 @@ export default class MyApp extends App {
           <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
         </Head>
         <Layout>
+          <Analytics />
           <Component {...pageProps} />
         </Layout>
       </React.Fragment>
