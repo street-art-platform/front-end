@@ -389,14 +389,12 @@ export default function Index() {
               <div className="sm:block flex flex-col mt-10">
                 <a
                   href="auth/register"
-                  target="_blank"
                   className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-2 bg-blueGray-400 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                 >
                   REGISTER
                 </a>
                 <a
                   href="auth/login"
-                  target="_blank"
                   className="github-star sm:ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
                 >
                   <i className="fas fa-sign-in-alt text-lg mr-1"></i>
