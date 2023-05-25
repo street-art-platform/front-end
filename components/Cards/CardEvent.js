@@ -274,7 +274,7 @@ export default function CardEvent() {
                 <div className="relative w-full mb-3">
                   <input
                     type="file"
-                    onChange={(e) => handleImageUpload(e.target.files)}
+                   /* onChange={(e) => handleImageUpload(e.target.files)}*/
                   />
                 </div>
               </div>
