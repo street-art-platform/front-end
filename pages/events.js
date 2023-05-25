@@ -77,7 +77,7 @@ export default function Events() {
           <div className="mt-6 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:gap-y-6">
             {callouts.map((callout) => (
               <a href={callout.href}> 
-              <div key={callout.name} className=" group relative  border bg-white  ">
+              <div key={callout.name} className=" group relative  border bg-white mb-6">
                 <div className="relative w-full overflow-hidden  bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
                   <img
                     src={callout.imageSrc}
