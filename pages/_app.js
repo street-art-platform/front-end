@@ -63,6 +63,7 @@ export default class MyApp extends App {
         <Layout>
           <ApolloProvider client={apolloClient}>
             <Component {...pageProps} />
+            <Analytics />
           </ApolloProvider>
         </Layout>
       </React.Fragment>
