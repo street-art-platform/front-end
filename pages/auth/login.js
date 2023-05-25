@@ -1,10 +1,22 @@
 import React, { useState, useEffect } from "react";
+import { gql, useMutation } from "@apollo/client";
+
 import Link from "next/link";
 
 // layout for page
 
 import Auth from "layouts/Auth.js";
 
+const login_hook = gql`
+  mutation ($credentials: LoginHookInput!) {
+    login_hook(objects: $credentials) {
+      userId
+      userRemId
+      authToken
+      accessToken
+    }
+  }
+`;
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,30 +29,32 @@ export default function Login() {
     setPassword(e.target.value);
   };
 
-  const handleLogin = () => {
-    // Make API request here using the provided endpoint and data
-    // Replace `API_ENDPOINT` with your actual API endpoint
-    fetch("API_ENDPOINT", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Handle response from the backend
-        console.log(data);
-        // Reset form fields
-        setEmail("");
-        setPassword("");
-      })
-      .catch((error) => {
-        console.error("Error:", error);
+  const [loginUser] = useMutation(login_hook);
+  const handleLogin = async () => {
+    try {
+      const { data } = await loginUser({
+        variables: {
+          credentials: {
+            email: email,
+            password: password,
+          },
+        },
       });
+
+      //Get the token and put it into the session
+      const token = data.login_hook.accessToken;
+      let claims = token.split(".")[1];
+      claims = JSON.parse(window.atob(claims));
+      claims.accessToken = token;
+      localStorage.setItem("session", JSON.stringify(claims));
+
+      setEmail("");
+      setPassword("");
+
+      //TODO: redirect to the page after authentication/login
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <>
@@ -50,10 +64,10 @@ export default function Login() {
             <div className="relative px-6 py-6 flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0">
               <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
                 <div className="text-blueGray-400 text-center mb-3 font-bold">
-                    <h6 className="text-blueGray-500 text-sm font-bold">
+                  <h6 className="text-blueGray-500 text-sm font-bold">
                     SIGN IN
-                   </h6>           
-               </div>
+                  </h6>
+                </div>
                 <form>
                   <div className="relative w-full mb-3">
                     <label
@@ -104,7 +118,6 @@ export default function Login() {
                       className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                       type="button"
                       onClick={handleLogin}
-
                     >
                       Sign In
                     </button>
@@ -113,9 +126,7 @@ export default function Login() {
               </div>
             </div>
             <div className="flex flex-wrap mt-6 relative">
-              <div className="w-1/2">
-               
-              </div>
+              <div className="w-1/2"></div>
               <div className="w-1/2 text-right">
                 <Link href="/auth/register">
                   <a href="#pablo" className="text-blueGray-200">
