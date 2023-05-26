@@ -4,6 +4,7 @@ import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
 import { Analytics } from '@vercel/analytics/react';
+import Script from "next/script";
 
 import PageChange from "components/PageChange/PageChange.js";
 
@@ -62,6 +63,18 @@ export default class MyApp extends App {
         </Head>
         <Layout>
           <ApolloProvider client={apolloClient}>
+            <Script
+                strategy="afterInteractive"
+                src={`https://www.googletagmanager.com/gtag/js?id=G-F45GGBD04K`}
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'G-F45GGBD04K');
+                `}
+            </Script>
             <Component {...pageProps} />
             <Analytics />
           </ApolloProvider>
