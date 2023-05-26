@@ -14,7 +14,7 @@ export default function Index() {
           <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
             <div className="pt-32 sm:pt-0">
               <h2 className="font-semibold text-4xl text-blueGray-600 in-line">
-            StreetArtify - Unleash the Vibrant World of Street Art..
+              StreetArtify - Unleash the Vibrant World of Street Art..
               </h2>
               <p className="mt-4 text-lg leading-relaxed  text-blueGray-600">
               StreetArtify is an immersive platform that celebrates the raw creativity and cultural significance of street art.{" "}
@@ -253,7 +253,7 @@ export default function Index() {
             </div>
 
             <div className="w-full md:w-6/12 px-12 md:px-4 ml-auto mr-auto mt-48">
-              <h3 className="text-3xl mb-2 font-semibold leading-normal uppercase">
+              <h3 className="mb-2 font-semibold leading-normal text-blueGray-700 text-4xl">
               A team passionate about urban creativity
               </h3>
               <p className="text-lg leading-relaxed mt-4 mb-4 text-blueGray-600">
