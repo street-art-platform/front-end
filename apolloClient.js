@@ -18,9 +18,12 @@ export function createApolloClient() {
     if(token){
       h.authorization = `Bearer ${token}`
     }
+    const cspHeader = "default-src 'self'; script-src 'self'; style-src 'self';";
+
     return {
       headers: {
         ...h,
+        'Content-Security-Policy': cspHeader,
         // authorization: token ? `Bearer ${token}` : "",
       },
     };

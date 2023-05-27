@@ -4,6 +4,7 @@ import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
 import { Analytics } from '@vercel/analytics/react';
+import Script from "next/script";
 
 import PageChange from "components/PageChange/PageChange.js";
 
@@ -57,11 +58,23 @@ export default class MyApp extends App {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          <title>Notus NextJS by Creative Tim</title>
-          <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+          <title>StreetArtify</title>
+          <script src={"https://maps.googleapis.com/maps/api/js?key= + AIzaSyB9xXrSGUyq6NnPICbyfKkWJPEvVqVc7UE"} ></script>
         </Head>
         <Layout>
           <ApolloProvider client={apolloClient}>
+            <Script
+                strategy="afterInteractive"
+                src={`https://www.googletagmanager.com/gtag/js?id=G-F45GGBD04K`}
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'G-F45GGBD04K');
+                `}
+            </Script>
             <Component {...pageProps} />
             <Analytics />
           </ApolloProvider>
