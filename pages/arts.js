@@ -1,54 +1,41 @@
 /* eslint-disable react/jsx-no-target-blank */
-import React from "react";
+import React,{ useState, useEffect } from 'react';
 import Link from "next/link";
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
-const callouts = [
-  {
-    name: 'Desk and Office',
-    description: 'Work from home accessories',
-    imageSrc: 'img/arts/art.jpg',
-    imageAlt: 'Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.',
-    href: '#',
-  },
-  {
-    name: 'Self-Improvement',
-    description: 'Journals and note-taking',
-    imageSrc: 'img/arts/art2.jpg',
-    imageAlt: 'Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.',
-    href: '#',
-  },
-  {
-    name: 'Travel',
-    description: 'Daily commute essentials',
-    imageSrc: 'img/arts/art3.png',
-    imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-    href: '#',
-  },
-  {
-    name: 'Travel2',
-    description: 'Daily commute essentials',
-    imageSrc: 'img/arts/art4.jpg',
-    imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-    href: '#',
-  },
-  {
-    name: 'Travel3',
-    description: 'Daily commute essentials',
-    imageSrc: 'img/arts/art5.jpg',
-    imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-    href: '#',
-  },
-  {
-    name: 'Travel4',
-    description: 'Daily commute essentials',
-    imageSrc: 'img/arts/art_1.png',
-    imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-    href: '#',
-  },
-]
+import { gql, useQuery } from '@apollo/client';
+
+const GET_ALL_ARTS = gql`
+  query {
+    street_arts {
+      id
+      title
+      address
+      city
+      created_at
+      is_approved
+      description
+      pictures {
+        link
+      }
+      user {
+        first_name
+        last_name
+      }
+    }
+  }
+`;
 export default function Arts() {
+  const { loading, error, data } = useQuery(GET_ALL_ARTS);
+  const [arts, setArts] = useState([]);
+
+  useEffect(() => {
+    if (data && data.street_arts) {
+      setArts(data.street_arts);
+    }
+  }, [data]);
+
   return (
     <>
       <IndexNavbar fixed />
@@ -58,22 +45,23 @@ export default function Arts() {
           <h2 className="text-2xl font-bold text-gray-900">Street Arts</h2>
 
           <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
-            {callouts.map((callout) => (
-              <div key={callout.name} className="group relative">
+            {arts.map((art) => (
+              <div key={art.id} className="group relative">
                 <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
                   <img
-                    src={callout.imageSrc}
-                    alt={callout.imageAlt}
+                    src={art && art.pictures && art.pictures[0] && art.pictures[0].link}
                     className="h-full w-full object-cover object-center"
                   />
                 </div>
                 <h3 className="mt-6 text-sm text-gray-500">
-                  <a href={callout.href}>
+                <Link href={`/art?id=${art.id}`}>
+                  <a>
                     <span className="absolute inset-0" />
-                    {callout.name}
+                    {art.title}
                   </a>
+                  </Link>
                 </h3>
-                <p className="text-base font-semibold text-gray-900">{callout.description}</p>
+                <p className="text-base font-semibold text-gray-900">{art.description}</p>
               </div>
             ))}
           </div>
