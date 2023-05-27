@@ -21,6 +21,25 @@ const cardartwithdetails = () => {
           Image: 'img/profile.jpg'
         },
       ];
+
+      const navigateToLocation = (address, latitude, longitude) => {
+        const zoomLevel = 14;
+        let mapUrl = '';
+        if (typeof window !== 'undefined') {
+          if (address) {
+            const encodedAddress = encodeURIComponent(address);
+            mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+          } else if (latitude && longitude) {
+            mapUrl = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}&zoom=${zoomLevel}`;
+          }
+    
+          if (mapUrl) {
+            window.open(mapUrl, '_blank');
+          }
+        }
+      }
+    
+      
   return (
     <div className="flex items-center justify-center h-screen w-700 h-700">
       <div className="flex bg-white lg:w-9/12 rounded-lg shadow-lg">
@@ -36,6 +55,15 @@ const cardartwithdetails = () => {
               <h2 className="text-lg "> Country , city</h2>
             </div>  
           </div>
+
+          <div className="mt-4 ">
+            <button className="text-blueGray-500 bg-transparent border border-solid border-blueGray-500 hover:bg-blueGray-500 hover:text-white active:bg-blueGray-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" 
+              onClick={() => navigateToLocation('Budapest, Régi posta utca 4, 1052 Magyarország')}>
+              <i className="fas fa-map-marker" aria-hidden="true"> </i>
+              Navigate
+            </button>
+          </div>
+
           <div className="mt-4 ">
               <p className="text-gray-600">Here we will put the description of the art bla bla bla bla bla</p>
             </div>

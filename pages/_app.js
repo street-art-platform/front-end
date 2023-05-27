@@ -58,8 +58,8 @@ export default class MyApp extends App {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          <title>StreetArtify</title>
-          <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+          <title>Notus NextJS by Creative Tim</title>
+          <script src={"https://maps.googleapis.com/maps/api/js?key= + AIzaSyB9xXrSGUyq6NnPICbyfKkWJPEvVqVc7UE"} ></script>
         </Head>
         <Layout>
           <ApolloProvider client={apolloClient}>
