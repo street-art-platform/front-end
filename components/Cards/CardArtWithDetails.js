@@ -3,9 +3,10 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { gql, useQuery } from "@apollo/client";
 
-const GET_ARTS = gql`
-query($id:uuid!){
+const GET_ALL_ARTS = gql`
+query GetArt($id: uuid!){
   street_arts_by_pk(id:$id) {
+    id
     title
     address
     country
@@ -21,23 +22,35 @@ query($id:uuid!){
       last_name
     }
   }
+  
 }
 `;
+
 
 const cardartwithdetails = (props) => {
   const router = useRouter();
   const { id } = router.query;
 
-  const { loading, error, data } = useQuery(GET_ARTS, {
+  const { loading, error, data } = useQuery(GET_ALL_ARTS, {
     variables: { id },
   });
-  const [arts, setArt] = useState(null);
+  const [art, setArt] = useState(null);
 
   useEffect(() => {
     if (data && data.street_arts_by_pk) {
       setArt(data.street_arts_by_pk);
     }
   }, [data]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error occurred while fetching art details</div>;
+  }
+
+  const arts = data?.street_arts_by_pk;
     const comments = [
         {
           id: 1,
@@ -88,7 +101,7 @@ const cardartwithdetails = (props) => {
           <div  className="flex items-center">
             <img src="img/profile.jpg" className="w-12 h-12  rounded-full"></img>
             <div className="ml-4 p-8">
-              <h2 className="text-lg font-bold">{arts && arts.user && arts.user[0] && arts.user[0].first_name && arts.user[1] && arts.user[1].last_name} </h2>
+              <h2 className="text-lg font-bold">{arts && arts.user && arts.user[0] && arts.user[0].first_name } </h2>
               <h2 className="text-lg "> {arts.country}{arts.city}</h2>
             </div>  
           </div>
