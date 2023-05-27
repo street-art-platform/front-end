@@ -29,6 +29,12 @@ const GET_ALL_EVENTS = gql`
 export default function Events() {
   const { loading, error, data } = useQuery(GET_ALL_EVENTS);
   const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    if (data && data.events) {
+      setEvents(data.events);
+    }
+  }, [data]);
   return (
     <>
     <IndexNavbar fixed />
@@ -41,7 +47,7 @@ export default function Events() {
           <div className="mt-6 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:gap-y-6">
             {events.map((event) => (
               <a href={event.link}> 
-              <div key={callout.id} className=" group relative  border bg-white  ">
+              <div key={event.id} className=" group relative  border bg-white  ">
                 <div className="relative w-full overflow-hidden  bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
                   <img
                     src={event.picture}
@@ -51,8 +57,8 @@ export default function Events() {
                 <div className="flex flex-wrap border-b-1 py-2">
                 <div className="w-4/12 px-4">
                   <h3 className="mt-2  text-gray-900">
-                  <p className="text-base text-blueGray-400">{event.start.month}</p>
-                  <p className="text-xl text-red-500 text-center ">{event.start.day}</p>
+                  <p className="text-base text-blueGray-400">{new Date(event.start).toLocaleString('default', { month: 'long' })}</p>
+                  <p className="text-xl text-red-500 text-center ">{new Date(event.start).toLocaleString('default', { day: 'numeric' })}</p>
                   </h3>
                 </div>
                 <div className="w-8/12 px-4">
