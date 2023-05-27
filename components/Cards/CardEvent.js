@@ -13,7 +13,7 @@ export default function CardEvent() {
   const [country, setCountry] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [description, setDescription] = useState("");
-  const [link, setEventLink] = useState("");
+  const [link, setLink] = useState("");
   const [image, setImage] = useState(null);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,7 +45,7 @@ export default function CardEvent() {
    setCountry("");
    setPostalCode("");
    setDescription("");
-   setEventLink("");
+   setLink("");
    setImage(null);
  };
   return (
@@ -274,7 +274,7 @@ export default function CardEvent() {
                 <div className="relative w-full mb-3">
                   <input
                     type="file"
-                    onChange={(e) => handleImageUpload(e.target.files)}
+                   /* onChange={(e) => handleImageUpload(e.target.files)}*/
                   />
                 </div>
               </div>

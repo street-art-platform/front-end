@@ -14,7 +14,7 @@ export default function Index() {
           <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
             <div className="pt-32 sm:pt-0">
               <h2 className="font-semibold text-4xl text-blueGray-600 in-line">
-            StreetArtify - Unleash the Vibrant World of Street Art..
+              StreetArtify - Unleash the Vibrant World of Street Art..
               </h2>
               <p className="mt-4 text-lg leading-relaxed  text-blueGray-600">
               StreetArtify is an immersive platform that celebrates the raw creativity and cultural significance of street art.{" "}
@@ -253,7 +253,7 @@ export default function Index() {
             </div>
 
             <div className="w-full md:w-6/12 px-12 md:px-4 ml-auto mr-auto mt-48">
-              <h3 className="text-3xl mb-2 font-semibold leading-normal uppercase">
+              <h3 className="mb-2 font-semibold leading-normal text-blueGray-700 text-4xl">
               A team passionate about urban creativity
               </h3>
               <p className="text-lg leading-relaxed mt-4 mb-4 text-blueGray-600">
@@ -389,14 +389,12 @@ export default function Index() {
               <div className="sm:block flex flex-col mt-10">
                 <a
                   href="auth/register"
-                  target="_blank"
                   className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-2 bg-blueGray-400 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                 >
                   REGISTER
                 </a>
                 <a
                   href="auth/login"
-                  target="_blank"
                   className="github-star sm:ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
                 >
                   <i className="fas fa-sign-in-alt text-lg mr-1"></i>
