@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from "react";
 import markersData from './markers';
+import { useRouter } from 'next/router';
 
 function MapExample() {
   
   
 const locations = [
-  { lat: -31.56391, lng: 147.154312 },
-  { lat: -33.718234, lng: 150.363181 },
-  { lat: -33.727111, lng: 150.371124 },
-  { lat: -33.848588, lng: 151.209834 },
-  { lat: -33.851702, lng: 151.216968 },
-  { lat: -34.671264, lng: 150.863657 },
-  { lat: -35.304724, lng: 148.662905 },
-  { lat: -36.817685, lng: 175.699196 },
-  { lat: -36.828611, lng: 175.790222 },
-  { lat: -37.75, lng: 145.116667 },
-  { lat: -37.759859, lng: 145.128708 },
-  { lat: -37.765015, lng: 145.133858 },
-  { lat: -37.770104, lng: 145.143299 },
+  { lat: 47.49504899, lng: 19.05065663 },
+  { lat: 47.49849535, lng: 19.06504255 },
+  { lat: 47.50022643, lng: 19.06265799 },
+  { lat: 47.50335807, lng: 19.05146564 },
+  { lat: 47.49713962, lng: 19.05654531 },
+  { lat: 47.49996959, lng: 19.06168345 },
+  { lat: 47.42975086, lng: 19.06757391 },
+  { lat: 47.42234708, lng: 19.07143856 },
+  { lat: 47.490186, lng: 19.047106 },
+  { lat: 47.490186, lng: 19.047106 },
+  { lat: 48.876546, lng: 2.364366799 },
+  { lat: 52.60017438, lng: 13.39518919 },
+  { lat: 52.59027002, lng: 13.33503546 },
+  
   { lat: -37.7737, lng: 145.145187 },
   { lat: -37.774785, lng: 145.137978 },
   { lat: -37.819616, lng: 144.968119 },
@@ -29,6 +31,8 @@ const locations = [
   { lat: -42.735258, lng: 147.438 },
   { lat: -43.999792, lng: 170.463352 },
 ];
+
+  const router = useRouter();
   const [dataArray, setDataArray] = useState([]);
   const mapRef = React.useRef(null);
     useEffect(() => {
@@ -38,7 +42,7 @@ const locations = [
       let lng = "19.0402";
       const myLatlng = new google.maps.LatLng(lat, lng);
       const mapOptions = {
-      zoom: 12,
+      zoom: 15,
       center: myLatlng,
       scrollwheel: false,
       zoomControl: true,
@@ -91,25 +95,16 @@ const locations = [
     const marker = new google.maps.Marker({
       position: myLatlng,
       map: map,
-      animation: google.maps.Animation.DROP,
-      title: "Notus NextJS!",
+      icon: { url: "img/marker.png",
+      scaledSize: new google.maps.Size(50, 50),
+      anchor: new google.maps.Point(25, 25),
+      shape: {
+        coords: [25, 25, 25],
+        type: 'circle'
+      }
+    },
+    title: "Budapest",
     });
-
-     // Fetch the marker data from the JSON file
-    //  fetch("./markers.json")
-    //  .then(response => response.json())
-    //  .then(data => {
-    //   console.log("jijij");
-    //    // Loop through the marker data and create markers on the map
-    //    data.forEach(marker => {
-    //       google.maps.event.addListener(marker, "click", function () {
-    //         infowindow.open(map, marker);
-    //       });
-    //    });
-    //  })
-    //  .catch(error => {
-    //    console.error('Error fetching marker data:', error);
-    //  });
 
     const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -117,12 +112,22 @@ const locations = [
       marker = new google.maps.Marker({
         position: position,
         map: map,
+        // icon:  "img/marker.png",
+        icon: { url: "img/marker.png",
+        scaledSize: new google.maps.Size(50, 50),
+        anchor: new google.maps.Point(25, 25),
+        shape: {
+          coords: [25, 25, 25],
+          type: 'circle'
+        },
+      },
         animation: google.maps.Animation.DROP,
-        title: "i",
+        // title: "helllooo",
+        label: "labellsss"
       });
 
       google.maps.event.addListener(marker, "click", function () {
-        infowindow.open(map, marker);
+        handleRedirect();
       });
     });
 
@@ -134,13 +139,14 @@ const locations = [
       content: contentString,
     });
 
-    google.maps.event.addListener(marker, "click", function () {
-      infowindow.open(map, marker);
-    });
+    const handleRedirect = () => {
+      window.open('/art', '_blank');
+    };
+
   });
   return (
     <>
-      <div className="relative w-full rounded h-600-px">
+      <div className="relative h-full rounded h-600-px">
         <div className="rounded h-full" ref={mapRef} />
       </div>
     </>

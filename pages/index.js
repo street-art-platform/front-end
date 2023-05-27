@@ -1,11 +1,17 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react";
 import Link from "next/link";
+import { useRouter } from 'next/router';
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
 export default function Index() {
+
+  const searchArt=()=>{
+    window.open('/maps', '_blank');
+  }
+
   return (
     <>
       <IndexNavbar fixed />
@@ -36,7 +42,32 @@ export default function Index() {
           alt="..."
         />
       </section>
- 
+      <section className="mt-2 md:mt-2 pb-40 relative bg-white-100">
+        <div className="container mx-auto items-center flex flex-wrap">
+          <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
+            <div className="pt-32 sm:pt-0">
+            <form class="flex items-center">   
+                <label for="voice-search" class="sr-only">Search</label>
+                <div class="relative w-full">
+                    <div class="mb-3 pt-0">
+                      <input type="text" placeholder="Find Street arts by city or artist" class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+                    
+                    <button type="button" class="absolute inset-y-0 right-0 flex items-center pr-3">
+                        <svg aria-hidden="true" class="w-4 h-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clip-rule="evenodd"></path></svg>
+                    </button>
+                  </div>
+                </div>
+                <button className="bg-blueGray-500 text-white bg-blueGray-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+                  onClick={() => searchArt()}
+                >
+                search
+              </button>
+            </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       <section className="mt-2 md:mt-2 pb-40 relative bg-blueGray-100">
         <div
           className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
