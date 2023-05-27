@@ -1,6 +1,43 @@
-import React from 'react';
+import React,{ useState, useEffect } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { gql, useQuery } from "@apollo/client";
 
-const cardartwithdetails = () => {
+const GET_ARTS = gql`
+query($id:uuid!){
+  street_arts_by_pk(id:$id) {
+    title
+    address
+    country
+    city
+    created_at
+    is_approved
+    description
+    pictures{
+      link
+    }
+    user{
+      first_name
+      last_name
+    }
+  }
+}
+`;
+
+const cardartwithdetails = (props) => {
+  const router = useRouter();
+  const { id } = router.query;
+
+  const { loading, error, data } = useQuery(GET_ARTS, {
+    variables: { id },
+  });
+  const [arts, setArt] = useState(null);
+
+  useEffect(() => {
+    if (data && data.street_arts_by_pk) {
+      setArt(data.street_arts_by_pk);
+    }
+  }, [data]);
     const comments = [
         {
           id: 1,
@@ -25,19 +62,19 @@ const cardartwithdetails = () => {
     <div className="flex items-center justify-center h-screen w-700 h-700">
       <div className="flex bg-white lg:w-9/12 rounded-lg shadow-lg">
         <div className="w-1/2">
-          <img src="img/arts/art_1.png" alt="Your Image" className="w-full h-full object-cover" />
+          <img src={arts && arts.pictures && arts.pictures[0] && arts.pictures[0].link} alt="Your Image" className="w-full h-full object-cover" />
         </div>
         <div className="w-1/2 bg-white p-2"> 
 
           <div  className="flex items-center">
             <img src="img/profile.jpg" className="w-12 h-12  rounded-full"></img>
             <div className="ml-4 p-8">
-              <h2 className="text-lg font-bold"> artist Name </h2>
-              <h2 className="text-lg "> Country , city</h2>
+              <h2 className="text-lg font-bold">{arts && arts.user && arts.user[0] && arts.user[0].first_name && arts.user[1] && arts.user[1].last_name} </h2>
+              <h2 className="text-lg "> {arts.country}{arts.city}</h2>
             </div>  
           </div>
           <div className="mt-4 ">
-              <p className="text-gray-600">Here we will put the description of the art bla bla bla bla bla</p>
+              <p className="text-gray-600">{arts.description}</p>
             </div>
           
           <div className="mt-8">
