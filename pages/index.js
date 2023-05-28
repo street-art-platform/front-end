@@ -283,7 +283,7 @@ export default function Index() {
             
             </div>
 
-            <div className="w-full md:w-6/12 px-12 md:px-4 ml-auto mr-auto mt-48">
+            <div id="about-us" className="w-full md:w-6/12 px-12 md:px-4 ml-auto mr-auto mt-48">
               <h3 className="mb-2 font-semibold leading-normal text-blueGray-700 text-4xl">
               A team passionate about urban creativity
               </h3>
@@ -299,7 +299,7 @@ export default function Index() {
               </p>
              
               <a
-                href="https://www.creative-tim.com/learning-lab/tailwind/nextjs/alerts/notus?ref=nnjs-index"
+                href="#contact-us"
                 target="_blank"
                 className="font-bold text-blueGray-700 hover:text-blueGray-500 ease-linear transition-all duration-150"
               >
