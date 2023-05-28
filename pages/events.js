@@ -46,7 +46,7 @@ export default function Events() {
           Step into a world where the streets come alive with creativity and imagination.</h2>
           <div className="mt-6 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:gap-y-6">
             {events.map((event) => (
-              <a href={event.link}> 
+              <a href={event.link} target="_blank" rel="noopener noreferrer"> 
               <div key={event.id} className=" group relative  border bg-white  ">
                 <div className="relative w-full overflow-hidden  bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
                   <img
