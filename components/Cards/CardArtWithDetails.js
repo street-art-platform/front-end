@@ -101,8 +101,8 @@ const Cardartwithdetails = (props) => {
           <div  className="flex items-center">
             <img src="img/profile.jpg" className="w-12 h-12  rounded-full"></img>
             <div className="ml-4 p-8">
-              <h2 className="text-lg font-bold">{arts && arts.user && arts.user[0] && arts.user[0].first_name } </h2>
-              <h2 className="text-lg "> {arts.country}{arts.city}</h2>
+            <h2 className="text-lg font-bold"> {arts && arts.user && arts.user.first_name} {arts && arts.user && arts.user.last_name}</h2>
+            <h2 className="text-lg "> {arts.country},{arts.city}</h2>
             </div>  
           </div>
 
