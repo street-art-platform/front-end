@@ -27,7 +27,7 @@ query GetArt($id: uuid!){
 `;
 
 
-const cardartwithdetails = (props) => {
+const Cardartwithdetails = (props) => {
   const router = useRouter();
   const { id } = router.query;
 
@@ -174,4 +174,4 @@ const cardartwithdetails = (props) => {
   );
 };
 
-export default cardartwithdetails;
+export default Cardartwithdetails;
