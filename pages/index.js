@@ -197,25 +197,29 @@ export default function Index() {
               </div>
             </div>
             <div className="w-full lg:w-12/12 px-4 -mt-4">
-              <div className="flex flex-wrap">
-            {arts.slice(0, 4).map((art) => (
-                <div key={art.id} className="w-full lg:w-3/12 px-4">
-                  <h5 className="text-xl font-semibold pb-4 text-center text-white">
-                    {art.title}
-                  </h5>
-                  <Link href={`/art?id=${art.id}`}>
-                    <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
-                      <img
-                        alt="..."
-                        className="align-middle border-none max-w-full h-auto rounded-lg"
-                        src={art && art.pictures && art.pictures[0] && art.pictures[0].link}
-                        />
-                    </div>
-                  </Link>
-                </div>
-                ))}
-                
-              </div>
+            <div className="mt-6 flex flex-wrap justify-center">
+  {arts.slice(0, 4).map((art) => (
+    <div key={art.id} className="w-full lg:w-3/12 px-4">
+      
+      <Link href={`/art?id=${art.id}`}>
+
+        <div className=" relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
+          <img
+            alt="..."
+            className="align-middle border-none max-w-full h-40  "
+            src={art && art.pictures && art.pictures[0] && art.pictures[0].link}
+          />
+        </div>
+      </Link>
+      <h5 className=" text-xl font-semibold pb-4 text-center text-white overflow-hidden">
+        {art.title.substring(0, 20) + "..." }
+      </h5>
+    </div>
+  ))}
+</div>
+
+
+              
             </div>
           </div>
         </div>
