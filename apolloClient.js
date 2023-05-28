@@ -3,7 +3,7 @@ import { setContext } from '@apollo/client/link/context';
 
 export function createApolloClient() {
   const httpLink = createHttpLink({
-    uri: 'http://ec2-13-50-239-88.eu-north-1.compute.amazonaws.com/v1/graphql', // Replace with your GraphQL endpoint
+    uri: 'https://streetartify.site/v1/graphql', // Replace with your GraphQL endpoint
   });
 
   const authLink = setContext((_, { headers }) => {
