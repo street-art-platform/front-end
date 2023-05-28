@@ -57,13 +57,13 @@ export default function Events() {
                 <div className="flex flex-wrap border-b-1 py-2">
                 <div className="w-4/12 px-4">
                   <h3 className="mt-2  text-gray-900">
-                  <p className="text-base text-blueGray-400">{new Date(event.start).toLocaleString('default', { month: 'long' })}</p>
+                  <p className="text-base text-blueGray-400 text-center">{new Date(event.start).toLocaleString('default', { month: 'long' })}</p>
                   <p className="text-xl text-red-500 text-center ">{new Date(event.start).toLocaleString('default', { day: 'numeric' })}</p>
                   </h3>
                 </div>
                 <div className="w-8/12 px-4">
                 <p className="text-xl font-semibold text-gray-900">{event.title}</p>
-                  <p className="text-base  text-blueGray-400">{event.description}</p>
+                  <p className="text-base  text-blueGray-400">{event.city}, {event.country}</p>
                 </div>
               </div>
  
