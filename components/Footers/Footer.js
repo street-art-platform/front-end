@@ -47,13 +47,7 @@ export default function Footer() {
                   className="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
                   type="button"
                 >
-                  <i className="fab fa-dribbble"></i>
-                </button>
-                <button
-                  className="bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                  type="button"
-                >
-                  <i className="fab fa-github"></i>
+                  <i className="fab fa-instagram"></i>
                 </button>
               </div>
             </div>
@@ -66,7 +60,7 @@ export default function Footer() {
                   <ul className="list-unstyled">
                     <li>
                       <a
-                        className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
+                        className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://streetartify.vercel.app/#about-us"
                       >
                         About Us
                       </a>
@@ -74,7 +68,7 @@ export default function Footer() {
                     <li>
                       <a
                         className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href=""
+                        href="https://streetartify.vercel.app/events"
                       >
                         Events
                       </a>
@@ -82,9 +76,9 @@ export default function Footer() {
                     <li>
                       <a
                         className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href=""
+                        href="https://streetartify.vercel.app/arts"
                       >
-                        Strert arts
+                        Street arts
                       </a>
                     </li>
                   </ul>

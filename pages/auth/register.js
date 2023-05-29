@@ -74,9 +74,9 @@ export default function Register() {
 
   return (
     <>
-      <div className="container mx-8 px-4 h-full">
+      <div className=" mx-8 px-4 h-full">
         <div className="flex content-center items-center justify-center h-full">
-          <div className="w-full lg:w-6/12 px-4 py-16">
+          <div className="w-full lg:w-6/12 gap-x-px py-16">
             <div className="relative px-6 py-6 flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0">
               <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
                 <div className="text-blueGray-400 text-center mb-3 font-bold">
