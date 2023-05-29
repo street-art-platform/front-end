@@ -6,7 +6,7 @@ function MapExample() {
   
   
 const locations = [
-  { lat: 47.49504899, lng: 19.05065663 },
+  { lat: 47.49504899, lng: 19.05065663 , title: "Budapest", description: "Budapest is the capital and the most populous city of Hungary, and the ninth-largest city in the European Union by population within city limits."},
   { lat: 47.49849535, lng: 19.06504255 },
   { lat: 47.50022643, lng: 19.06265799 },
   { lat: 47.50335807, lng: 19.05146564 },
@@ -123,10 +123,11 @@ const locations = [
       },
         animation: google.maps.Animation.DROP,
         // title: "helllooo",
-        label: "labellsss"
+        label: locations.title
       });
 
       google.maps.event.addListener(marker, "click", function () {
+        navigateToLocation(null, position.lat, position.lng);
         handleRedirect();
       });
     });
@@ -139,6 +140,22 @@ const locations = [
       content: contentString,
     });
 
+    const navigateToLocation = (address, latitude, longitude) => {
+      const zoomLevel = 14;
+      let mapUrl = '';
+      if (typeof window !== 'undefined') {
+        if (address) {
+          const encodedAddress = encodeURIComponent(address);
+          mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+        } else if (latitude && longitude) {
+          mapUrl = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}&zoom=${zoomLevel}`;
+        }
+  
+        if (mapUrl) {
+          window.open(mapUrl, '_blank');
+        }
+      }
+    }
     const handleRedirect = () => {
       window.open('/art', '_blank');
     };

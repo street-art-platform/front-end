@@ -108,7 +108,7 @@ const Cardartwithdetails = (props) => {
           {/* <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-blueGray-200">
             <i className="fas fa-user text-xl"></i>
           </div>  */}
-          <h3 className="mt-4 text-3xl font-semibold">{arts.title}</h3>
+          <h3 className="mt-4 mb-4 text-3xl font-semibold">{arts.title}</h3>
           <div  className="flex items-center">
              <img src="img/artist_image.jpg" className="w-12 h-12  rounded-full"></img>
              <div className="ml-4 p-8">
@@ -188,6 +188,9 @@ const Cardartwithdetails = (props) => {
             </button> */}
             <h1 className="text-gray-600 mb-2" >0 likes</h1>
           </div>
+
+ 
+
             <div className="border-t border-gray-300 pt-4">
             {/* {comments.length === 0 ? (
                 <p>No comments yet.</p>
@@ -222,8 +225,24 @@ const Cardartwithdetails = (props) => {
               
               
             </div>
-
-
+            <div>
+              <h3 className="mt-6 mb-4 text-3xl font-semibold">Description</h3>
+              <div>
+                    <h4 className="text-blueGray-500">
+                    {arts.description}  
+                    </h4>
+                    <h4 className="text-blueGray-500">
+                    Location : {arts.street} {arts.post_code}
+                    </h4>
+                    <div className="mt-4 ">
+                      <button className="text-white bg-purple-500 border border-solid border-purple-500 hover:bg-blueGray-500 hover:text-white active:bg-blueGray-600 font-bold  text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" 
+                        onClick={() => navigateToLocation(arts.address)}>
+                        <i className="fas fa-map-marker-alt" aria-hidden="true"> </i>{' '}
+                      Navigate
+                      </button>
+                  </div>
+              </div>
+            </div>
           </div>
   </div>
 
